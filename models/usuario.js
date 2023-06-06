@@ -32,4 +32,9 @@ const UsuarioSchema = Schema({
   },
 });
 
+UsuarioSchema.methods.toJSON = function () {
+  const { __v, password, ...usuario } = this.toObject();
+  return usuario;
+};
+
 export default model("Usuario", UsuarioSchema);
